@@ -7,11 +7,11 @@ const app = express();
 const quizRoutes = require('./routes/quiz');
 
 mongoose.connect(
-    'mongodb+srv://simon-quiz:molimo76@cluster0-twfrq.mongodb.net/api-quiz?retryWrites=true&w=majority',
+    'mongodb://simon-quiz:molimo76@cluster0-shard-00-00-twfrq.mongodb.net:27017,cluster0-shard-00-01-twfrq.mongodb.net:27017,cluster0-shard-00-02-twfrq.mongodb.net:27017/api-quiz?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority',
     {useNewUrlParser: true,
         useUnifiedTopology: true})
     .then(() => console.log('Connexion à MongoDB réussie !'))
-    .catch(() => console.log('Connexion à MongoDB échouée !'));
+    .catch((err) => console.log('Connexion à MongoDB échouée ! ' + err));
 
 //set header
 app.use((req, res, next) => {

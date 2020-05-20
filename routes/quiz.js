@@ -3,11 +3,13 @@ const router = express.Router();
 const quizCtrl = require('../controllers/quiz');
 
 /**
- * @route GET /question/{quiz}/{id}
+ * @route GET /quiz/{id}
  * @group Question
- * @param {id} id.query.required - question id
- * @param {quiz} quiz.query.required - quiz id
- * @returns {Question} question object
+ * @param {id} id.query.required - quiz id
+ * @returns {Quiz} question object
  */
-router.get('/quiz/:id', quizCtrl.getQuiz());
+router.get('/:id', quizCtrl.getQuiz);
 
+router.post('', quizCtrl.addQuiz);
+
+module.exports = router;

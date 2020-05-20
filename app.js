@@ -3,8 +3,11 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 
+//routes
+const quizRoutes = require('./routes/quiz');
+
 mongoose.connect(
-    'mongodb+srv:/simon-quiz:387278749283fhfiefhoief@cluster0-twfrq.mongodb.net/quizz?retryWrites=true&w=majority',
+    'mongodb+srv://simon-quiz:molimo76@cluster0-twfrq.mongodb.net/api-quiz?retryWrites=true&w=majority',
     {useNewUrlParser: true,
         useUnifiedTopology: true})
     .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -21,5 +24,5 @@ app.use((req, res, next) => {
 //parse the body for post request
 app.use(bodyParser.json());
 
-
+app.use('/quiz', quizRoutes);
 module.exports = app;

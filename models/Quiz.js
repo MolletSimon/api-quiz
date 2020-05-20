@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const quizSchema = mongoose.Schema({
+    userId: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
     title: {type: String, required: true},
     questions: [{
         title: {type: String, required: true},

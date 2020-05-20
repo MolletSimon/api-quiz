@@ -19,6 +19,14 @@ router.get('/:id', quizCtrl.getQuiz);
 router.post('', quizCtrl.addQuiz);
 
 /**
+ * @route POST /quiz
+ * @group Question
+ * @body quiz object
+ * @returns {Quiz} quiz object
+ */
+router.post('/question/:id', quizCtrl.addQuestionToQuiz);
+
+/**
  * @route DELETE /quiz/{id}/{question}
  * @group Question
  * @param {id} quiz id

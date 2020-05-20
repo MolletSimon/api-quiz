@@ -24,12 +24,22 @@ exports.removeQuestionFromQuiz = (req, res, next) => {
                 ...quiz
             });
             quiz.save()
-                .then((quiz) => res.status(201).json({quiz}))
+                .then((quiz) => res.status(200).json({quiz}))
                 .catch(error => res.status(400).json({error}))
         })
         .catch(error => res.status(400).json({error}))
 }
 
 exports.addQuestionToQuiz = (req, res, next) => {
-    
+    Quiz.findOne( {_id: req.params.id })
+        .then(quiz => {
+            quiz.questions.push(req.body);
+            const newQuiz = new Quiz({
+                ...quiz
+            });
+            quiz.save()
+                .then(quiz => res.status(201).json({quiz}))
+                .catch(err => res.status(400).json({error}));
+        })
+        .catch(error => res.status(400).json({error}))
 }

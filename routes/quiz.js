@@ -27,7 +27,23 @@ router.post('', quizCtrl.addQuiz);
 router.post('/question/:id', quizCtrl.addQuestionToQuiz);
 
 /**
- * @route DELETE /quiz/{id}/{question}
+ * @route PUT /quiz
+ * @group Question
+ * @body quiz object
+ * @returns {Quiz} quiz object
+ */
+router.put('/:id', quizCtrl.updateQuiz);
+
+/**
+ * @route DELETE /quiz/{id}/
+ * @group Question
+ * @param {id} quiz id
+ * @param {Question} question id
+ */
+router.delete('/:id', quizCtrl.removeQuiz);
+
+/**
+ * @route DELETE /quiz/question/{id}/{question}
  * @group Question
  * @param {id} quiz id
  * @param {Question} question id

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const quizCtrl = require('../controllers/quiz');
+const auth = require('../middleware/auth');
+const userMiddleware = require('../middleware/userMiddleware');
 
 /**
  * @route GET /quiz/{id}
@@ -8,7 +10,7 @@ const quizCtrl = require('../controllers/quiz');
  * @param {id} id.query.required - quiz id
  * @returns {Quiz} quiz object
  */
-router.get('/:id', quizCtrl.getQuiz);
+router.get('/:id', auth, quizCtrl.getQuiz);
 
 /**
  * @route POST /quiz
@@ -16,7 +18,7 @@ router.get('/:id', quizCtrl.getQuiz);
  * @body quiz object
  * @returns {Quiz} quiz object
  */
-router.post('', quizCtrl.addQuiz);
+router.post('', auth, quizCtrl.addQuiz);
 
 /**
  * @route POST /quiz
@@ -24,7 +26,7 @@ router.post('', quizCtrl.addQuiz);
  * @body quiz object
  * @returns {Quiz} quiz object
  */
-router.post('/question/:id', quizCtrl.addQuestionToQuiz);
+router.post('/question/:id', auth, quizCtrl.addQuestionToQuiz);
 
 /**
  * @route PUT /quiz
@@ -32,7 +34,7 @@ router.post('/question/:id', quizCtrl.addQuestionToQuiz);
  * @body quiz object
  * @returns {Quiz} quiz object
  */
-router.put('/:id', quizCtrl.updateQuiz);
+router.put('/:id', auth, quizCtrl.updateQuiz);
 
 /**
  * @route DELETE /quiz/{id}/
@@ -40,7 +42,7 @@ router.put('/:id', quizCtrl.updateQuiz);
  * @param {id} quiz id
  * @param {Question} question id
  */
-router.delete('/:id', quizCtrl.removeQuiz);
+router.delete('/:id', auth, quizCtrl.removeQuiz);
 
 /**
  * @route DELETE /quiz/question/{id}/{question}
@@ -48,6 +50,6 @@ router.delete('/:id', quizCtrl.removeQuiz);
  * @param {id} quiz id
  * @param {Question} question id
  */
-router.delete('/:id/:question', quizCtrl.removeQuestionFromQuiz);
+router.delete('/:id/:question', auth, quizCtrl.removeQuestionFromQuiz);
 
 module.exports = router;

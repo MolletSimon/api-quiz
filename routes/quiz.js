@@ -13,6 +13,11 @@ const userMiddleware = require('../middleware/userMiddleware');
 router.get('/:id', quizCtrl.getQuiz);
 
 /**
+ * @route GET /quiz/
+ */
+router.get('', quizCtrl.getQuizzes);
+
+/**
  * @route POST /quiz
  * @group Question
  * @body quiz object

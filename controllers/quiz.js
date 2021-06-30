@@ -15,6 +15,12 @@ exports.getQuiz = (req, res, next) => {
         .catch(error => res.status(400).json({error}));
 }
 
+exports.getQuizzes = (req, res, next) => {
+    Quiz.find()
+        .then(quizzes => res.status(200).json({quizzes}))
+        .catch(error => res.status(400).json({error}))
+}
+
 exports.removeQuiz = (req, res, next) => {
     Quiz.deleteOne({ _id: req.params.id })
         .then(() => res.status(200).json({message: 'Quiz deleted !'}))

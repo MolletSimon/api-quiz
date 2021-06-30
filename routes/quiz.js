@@ -10,7 +10,7 @@ const userMiddleware = require('../middleware/userMiddleware');
  * @param {id} id.query.required - quiz id
  * @returns {Quiz} quiz object
  */
-router.get('/:id', auth, quizCtrl.getQuiz);
+router.get('/:id', quizCtrl.getQuiz);
 
 /**
  * @route POST /quiz

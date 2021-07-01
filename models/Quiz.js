@@ -5,14 +5,11 @@ const quizSchema = mongoose.Schema({
     title: {type: String, required: true},
     questions: [{
         title: {type: String, required: true},
-        propositions: {
-            goodAnswer: {type: Number, required: true},
-            answers:
-                [{
-                    id: {type: Number, required: true},
-                    response: {type: String, required: true}
-                }]
-        }
+        answers:
+            [{
+                response: {type: String, required: true},
+                good: {type: Boolean, required: true}
+            }]
     }]
 });
 

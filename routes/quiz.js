@@ -23,7 +23,7 @@ router.get('', quizCtrl.getQuizzes);
  * @body quiz object
  * @returns {Quiz} quiz object
  */
-router.post('', auth, quizCtrl.addQuiz);
+router.post('', quizCtrl.addQuiz);
 
 /**
  * @route POST /quiz
